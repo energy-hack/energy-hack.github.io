@@ -16,17 +16,13 @@ Plotly.d3.dsv(";", ",")(
 
     const old_data = real_data.map(num => (num * 0.4 + mean * 0.55 + Math.random() * 0.05) * 1.5);
 
-    console.log(timeline.join("\n"));
-    console.log(real_data.join("\n"));
-
-
     const trace1 = {
       type: "scatter",
       mode: "lines",
       name: 'Current load',
       x: timeline,
       y: real_data,
-      line: {color: '#17BECF'}
+      line: {color: '#26a69a'}
     };
 
     const trace2 = {
