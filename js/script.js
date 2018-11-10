@@ -9,9 +9,9 @@ window.addEventListener('load', async () => {
 
   const wei = await wallet.getBalance()
   const balance = web3.utils.fromWei(wei)
-  
+
   const tokenBalance = await wallet.getTokenBalance(noxonToken)
 
-  alert(`Balance: ${Number(balance).toFixed(3)}`)
-  alert(`NOXON Balance: ${Number(tokenBalance).toFixed(3)}`)
+  console.log(`Balance: ${Number(balance).toFixed(3)}`)
+  console.log(`NOXON Balance: ${Number(tokenBalance).toFixed(3)}`)
 });
