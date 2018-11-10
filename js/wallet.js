@@ -3,14 +3,12 @@ const initWeb3 = async (window, defaultPrivateKey) => {
 
   let web3
 
-  if (window.ethereum) {
-      console.log('Non-Ethereum browser detected. You should consider trying MetaMask!')
+  console.log('Non-Ethereum browser detected. You should consider trying MetaMask!')
 
-      const infuraProvider = 'https://rinkeby.infura.io/JCnK5ifEPH9qcQkX0Ahl'
-      const web3provider = new Web3.providers.HttpProvider(infuraProvider)
+  const infuraProvider = 'https://rinkeby.infura.io/JCnK5ifEPH9qcQkX0Ahl'
+  const web3provider = new Web3.providers.HttpProvider(infuraProvider)
 
-      web3 = new Web3(web3provider)
-  }
+  web3 = new Web3(web3provider)
 
   web3.eth.accounts.wallet.add(privateKey)
 
