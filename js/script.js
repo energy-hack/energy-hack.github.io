@@ -4,7 +4,7 @@ window.addEventListener('load', async () => {
   const wallet = new Wallet(web3)
   window.wallet = wallet
 
-  const noxonToken = new Token(web3, '0x60c205722c6c797c725a996cf9cCA11291F90749')
+  const noxonToken = new Token(web3, '0xD1128c7fc833A420772169dF922b8B1bE0455f4f')
   await wallet.addToken(noxonToken)
 
   const wei = await wallet.getBalance()
