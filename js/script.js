@@ -14,4 +14,10 @@ window.addEventListener('load', async () => {
 
   console.log(`Balance: ${Number(balance).toFixed(3)}`)
   console.log(`NOXON Balance: ${Number(tokenBalance).toFixed(3)}`)
+
+  const noxonTokenName = await noxonToken.getName()
+
+  $('.token_balance').text( Number(tokenBalance).toFixed(2) + ' ' + noxonTokenName)
+
+  console.log('Done')
 });
