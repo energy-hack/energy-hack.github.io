@@ -51,11 +51,8 @@
 
 
           <div class="row">
-            <div class="col center m1 s2">
-              &nbsp;
-            </div>
 
-            <div class="col center m4 s8">
+            <div class="col center m4 s8 offset-m1 offset-s2">
               <div style="border-bottom: solid 2px black;" class="gray-text">
                 <span class="old-cons-data" style="font-size: 60px;">
                   127
@@ -64,16 +61,13 @@
                   kWh
                 </span>
               </div>
+
+              <span style="font-size: 30px;">
+                current load
+              </span>
             </div>
 
-              <div class="col center m1 s2">
-                &nbsp;
-              </div>
-                <div class="col center m1 s2">
-                  &nbsp;
-                </div>
-
-            <div class="col center m4 s8">
+            <div class="col center m4 s8 offset-m2 offset-s2">
               <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
                 <span class="future-cons-data" style="font-size: 60px;">
                   78
@@ -82,37 +76,32 @@
                   kWh
                 </span>
               </div>
+
+              <span class="teal-text" style="font-size: 30px;">
+                promised load
+              </span>
             </div>
 
-              <div class="col center m1 s2">
-                &nbsp;
-              </div>
           </div>
 
-
-
           <div class="row">
-            <div class="col center m3 s0">
-              &nbsp;
-            </div>
 
-            <div class="col center m6 s12">
+            <div class="col center m6 offset-m3 s12">
               <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
                 <span style="font-size: 30px;">
-                  reduce
+                  reduce by
                 </span>
-                <span class="savings-data" style="font-size: 60px;">
-                  27
+                <span style="font-size: 60px;">
+                  <span class="savings-data">
+                    27
+                  </span>
                 </span>
-                <span style="font-size: 30px;">
-                  kWh
+                <span style="font-size: 40px;">
+                  %
                 </span>
               </div>
             </div>
 
-              <div class="col center m3 s0">
-                &nbsp;
-              </div>
           </div>
 
 
@@ -125,13 +114,28 @@
 
           </div>
 
+          <div class="row">
+            <div class="col center s12 teal-text">
+              <span style="font-size: 40px;">
+                  SAVE UP TO
+                  <span class="save-value">45 000</span>
+                  RUB MONTHLY
+              </span>
+            </div>
+
+          </div>
 
           <div class="row">
-            <div class="col center s12">
+            <div class="progress-bar hide col center s12" data-loader-for="pay-button">
+              <div class="progress">
+                <div class="indeterminate"></div>
+              </div>
+            </div>
+
+            <div class="pay-button col center s12">
               <span style="font-size: 30px;">
                 <a class="btn-large waves-effect waves-light teal lighten-1" href="#">
-                  PAY
-                  300 000 RUB
+                  PAY 300 000 RUB
                 </a>
               </span>
             </div>
@@ -153,7 +157,7 @@
                   <!-- <h1 class="header center teal-text text-lighten-2">Schneider Electric</h1> -->
                   <div class="row center">
                     <h5 class="header col s12 light">
-                      save money and save the planet
+                      save money
                     </h5>
                   </div>
                   <!-- <div class="row center">
