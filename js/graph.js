@@ -1,5 +1,5 @@
 Plotly.d3.dsv(";", ",")(
-  "https://raw.githubusercontent.com/energy-hack/data/master/E150.csv",
+  "https://raw.githubusercontent.com/energy-hack/data/master/E150_daily.csv",
   function(err, rows) {
     if (err) {
       return console.error(err)
@@ -14,12 +14,14 @@ Plotly.d3.dsv(";", ",")(
 
     const mean = real_data.reduce((sum, elem) => sum + elem, 0) / real_data.length
 
-    const old_data = real_data.map(num => (num * 0.4 + mean * 0.55 + Math.random() * 0.05) * 1.5);
+    const old_data = real_data.map(num => (num * 0.4 + mean * 0.4 + Math.random() * 0.2) * 1.5);
+
+    // real_data[0] = 0
 
     const trace1 = {
       type: "scatter",
       mode: "lines",
-      name: 'Current load',
+      name: 'Using Green Energy',
       x: timeline,
       y: real_data,
       line: {color: '#26a69a'}
@@ -28,7 +30,7 @@ Plotly.d3.dsv(";", ",")(
     const trace2 = {
       type: "scatter",
       mode: "lines",
-      name: 'Last-month load',
+      name: 'Usual Consumption',
       x: timeline,
       y: old_data,
       line: {color: '#7F7F7F'}
@@ -44,6 +46,6 @@ Plotly.d3.dsv(";", ",")(
       title: 'Energy Consumption per day',
     };
 
-    Plotly.newPlot('savingsGraph', data, layout);
+    Plotly.newPlot('savingsGraph', data, layout, {displayModeBar: false});
   }
 )
