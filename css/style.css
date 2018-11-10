@@ -19,6 +19,16 @@ p {
   color: #26a69a;
 }
 
+.strokeme
+{
+    color: white;
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;   
+}
+
 .parallax-container {
   min-height: 380px;
   line-height: 0;
