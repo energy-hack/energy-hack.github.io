@@ -1,27 +1,17 @@
-const initWeb3 = async (window) => {
-  if (window.ethereum) {
-      window.web3 = new Web3(ethereum);
-      try {
-          await ethereum.enable();
-      } catch (error) {
-          console.error(error)
-      }
-  } else if (window.web3) {
-      window.web3 = new Web3(web3.currentProvider);
-  } else {
-      console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-  }
-}
-
 window.addEventListener('load', async () => {
-  await initWeb3(window)
+  const web3 = await initWeb3(window)
 
-  const account = web3.eth.accounts[0]
+  const wallet = new Wallet(web3)
+  window.wallet = wallet
 
-  web3.eth.getBalance(account, (_, wei) => {
-    const balance = web3.fromWei(wei)
+  const noxonToken = new Token(web3, '0x60c205722c6c797c725a996cf9cCA11291F90749')
+  await wallet.addToken(noxonToken)
 
-    alert(`Balance: ${balance.toFixed(3)}`)
-  })
+  const wei = await wallet.getBalance()
+  const balance = web3.utils.fromWei(wei)
+  
+  const tokenBalance = await wallet.getTokenBalance(noxonToken)
 
+  alert(`Balance: ${Number(balance).toFixed(3)}`)
+  alert(`NOXON Balance: ${Number(tokenBalance).toFixed(3)}`)
 });
