@@ -66,18 +66,27 @@
     }
 
     window.updateStatusPage = async () => {
-      // const contract = await new Contract(web3, "0xa44D6e0d17507cA98794393526ad566441C4A780", _SchneiderABI)
-
-      if (window.location.pathname == '/status.html') {
-        const contract = await new Contract(web3, "0xa44D6e0d17507cA98794393526ad566441C4A780", _SchneiderABI)
-
-        // ...
-        $('#status_page_span_number_1').text(await contract.call('curLoad'))
-        $('#status_page_span_number_2').text(await contract.call('promisedLoad'))
-        $('#status_page_span_number_3').text('Чё')
-        $('#status_page_span_number_4').text('сюда?')
-        // ...
+      if (window.location.pathname !== '/status.html' && window.location.pathname !== '/status') {
+        return
       }
+
+      $('#status_page_span_number_1').text('...')
+      $('#status_page_span_number_2').text('...')
+      $('#status_page_span_number_3').text('...')
+      $('#status_page_span_number_4').text('...')
+
+      const contractAddress = window.location.hash.slice(1) // "0xa44D6e0d17507cA98794393526ad566441C4A780"
+
+      if (!contractAddress) return console.error('no contract')
+
+      const contract = await new Contract(web3, contractAddress, _SchneiderABI)
+
+      // ...
+      $('#status_page_span_number_1').text(await contract.call('curLoad'))
+      $('#status_page_span_number_2').text(await contract.call('promisedLoad'))
+      $('#status_page_span_number_3').text('Чё')
+      $('#status_page_span_number_4').text('сюда?')
+      // ...
     }
 
   }); // end of document ready
