@@ -78,5 +78,9 @@ window.addEventListener('load', async () => {
     return true
   }
 
-  window.updateBalance()
+
+  updateBalance();
+
+  updateStatusPage();
+
 });

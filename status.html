@@ -58,104 +58,81 @@
 
 
 
-        <hr>
+        <hr style="margin-bottom: 80px; margin-top: 40px">
 
         <div class="row">
-          <!-- HORIZONTAL ROW OF INFORMATION type A -->
 
-          <div class="col center m6 s12" style="margin-top: 20px">
-            <span style="font-size: 30px;">
-              TEXT AT LEFT
+          <div class="col center m4 s4 offset-m1 offset-s2">
+            <span class="black-text">
+              currently monthly consumption
             </span>
-          </div>
-
-          <div class="col center m6 s12" style="margin-top: 20px">
-            <span style="font-size: 30px;">
-              TEXT AT RIGHT
-            </span>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <!-- HORIZONTAL ROW OF INFORMATION type B -->
-
-          <div class="col center m6 s12">
-            <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
+            <div class="black-text" style="font-size: 60px; border-bottom: dotted 5px black; white-space: nowrap;">
+              <span id="status_page_span_number_1" class="future-cons-data" style="font-size: 60px;">
+                ...
+              </span>
               <span style="font-size: 30px;">
-                some text and n7mb3rs
+                kWh
               </span>
             </div>
           </div>
 
-          <div class="col center m6 s12">
-            <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
+          <div class="col center m4 s8 offset-m2 offset-s2">
+            <span class="teal-text">
+              promised monthly consumption
+            </span>
+            <div class="teal-text" style="font-size: 60px; border-bottom: solid 5px teal; white-space: nowrap;">
+              <span id="status_page_span_number_2" class="future-cons-data" style="font-size: 60px;">
+                ...
+              </span>
               <span style="font-size: 30px;">
-                some text and n7mb3rs
+                kWh
               </span>
             </div>
           </div>
 
         </div>
 
-        <div class="row">
-          <!-- HORIZONTAL ROW OF INFORMATION type A -->
+        <div class="row" style="margin-top: 80px;">
 
-          <div class="col center m6 s12" style="margin-top: 20px">
-            <span style="font-size: 30px;">
-              TEXT AT LEFT
-            </span>
-          </div>
-
-          <div class="col center m6 s12" style="margin-top: 20px">
-            <span style="font-size: 30px;">
-              TEXT AT RIGHT
-            </span>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <!-- HORIZONTAL ROW OF INFORMATION type B -->
-
-          <div class="col center m6 s12">
-            <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
-              <span style="font-size: 30px;">
-                some text and n7mb3rs
+            <div class="col center m4 s4 offset-m1 offset-s2">
+              <span class="black-text">
+                estimated usual consumption
               </span>
+              <div class="black-text" style="font-size: 60px; border-bottom: dotted 5px black; white-space: nowrap;">
+                <span id="status_page_span_number_3" class="future-cons-data" style="font-size: 80px;">
+                  ...
+                </span>
+                <span style="font-size: 40px;">
+                  kWh
+                </span>
+              </div>
             </div>
-          </div>
-
-          <div class="col center m6 s12">
-            <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
-              <span style="font-size: 30px;">
-                some text and n7mb3rs
+  
+            <div class="col center m4 s8 offset-m2 offset-s2">
+              <span class="teal-text">
+                current consumed
               </span>
+              <div class="teal-text" style="font-size: 60px; border-bottom: solid 5px teal; white-space: nowrap;">
+                <span id="status_page_span_number_4" class="future-cons-data" style="font-size: 80px;">
+                  ...
+                </span>
+                <span style="font-size: 40px;">
+                  kWh
+                </span>
+              </div>
             </div>
+  
           </div>
-        </div>
 
       </form>
     </div>
   </div>
-
-
-  <div class="row">
-
-    <script>
-      function onClickUPDATE() {
-        $('#sneaky_progress_bar').removeClass('hide');
-        $('#sneaky_button').addClass('hide');
-        setTimeout(function () {
-          $('#sneaky_progress_bar').addClass('hide');
-          $('#sneaky_button').removeClass('hide');
-        }, 5000)
-      }
-    </script>
+  
+  <div class="row" style="margin-top: 40px">
 
     <div class="pay-button col center s12" style="margin-top: 20px">
       <span style="font-size: 30px;">
-        <a id="sneaky_button" onclick="onClickUPDATE()" class="btn-large waves-effect waves-light purple lighten">
+        <a id="sneaky_button" onclick="updateStatusPage()" class="btn-large waves-effect waves-light purple lighten">
           UPDATE
         </a>
       </span>
@@ -228,8 +205,6 @@
   <script src="js/SchneiderSysABI.js"></script>
   <script src="js/SchneiderSysBIN.js"></script>
   <script src="js/wallet.js"></script>
-  <script src="js/graph.js"></script>
-
   <script src="js/script.js"></script>
 
 </body>
