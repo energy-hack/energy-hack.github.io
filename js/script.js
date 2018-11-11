@@ -4,8 +4,12 @@ window.addEventListener('load', async () => {
   const wallet = new Wallet(web3)
   window.wallet = wallet
 
-  const noxonToken = new Token(web3, '0xD1128c7fc833A420772169dF922b8B1bE0455f4f')
+  const tokenAddress = "0xD1128c7fc833A420772169dF922b8B1bE0455f4f"
+
+  const noxonToken = new Token(web3, tokenAddress)
   await wallet.addToken(noxonToken)
+
+  $('.token_balance').attr("href", "https://rinkeby.etherscan.io/address/" + tokenAddress)
 
   window.updateBalance = async () => {
     const wei = await wallet.getBalance()
