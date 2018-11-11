@@ -109,9 +109,12 @@ class Wallet {
     return this.web3.eth.getBalance(this.account.address)
   }
 
-  getTokenBalance(token, address) {
+  async getTokenBalance(token, address) {
     address = address || this.account.address
 
-    return token.getBalance(address) / (10**parseInt(await token.getDecimals()))
+    const balance = await token.getBalance(address)
+    const _decimals = await token.getDecimals()
+    const decimals = parseInt(_decimals) || 18
+    return balance / (10**decimals)
   }
 }
