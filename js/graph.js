@@ -14,14 +14,12 @@ Plotly.d3.dsv(";", ",")(
 
     const mean = real_data.reduce((sum, elem) => sum + elem, 0) / real_data.length
 
-    const old_data = real_data.map(num => (num * 0.4 + mean * 0.4 + Math.random() * 0.2) * 1.5);
-
-    // real_data[0] = 0
+    const old_data = real_data.map(num => (num * 0.17 + mean * 0.80 + mean * Math.random() * 0.02) * 1.5);
 
     const trace1 = {
       type: "scatter",
       mode: "lines",
-      name: 'Using Green Energy',
+      name: 'Using Schneider Electric services',
       x: timeline,
       y: real_data,
       line: {color: '#26a69a'}
@@ -43,7 +41,7 @@ Plotly.d3.dsv(";", ",")(
 
     const layout = {
       width: 800,
-      title: 'Energy Consumption per day',
+      title: 'Energy Consumption per day (kWh)',
     };
 
     Plotly.newPlot('savingsGraph', data, layout, {displayModeBar: false});
