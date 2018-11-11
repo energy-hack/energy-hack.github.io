@@ -115,14 +115,6 @@ class Token extends Contract {
 
   transfer(from, to, value) {
     this.send("transfer", from, to, value)
-    //
-    // const estimatedGas = await this.contract.methods.transfer(to, value).estimateGas()
-    //
-    // return this.contract.methods.transfer(to, value).send({
-    //   from,
-    //   gasLimit: estimatedGas || 1e5
-    // })
-    // .on('transactionHash', hash => console.log('tx receipt', hash))
   }
 
   getBalance(address) {
