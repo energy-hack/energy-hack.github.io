@@ -25,16 +25,19 @@
 
       const promised_load = (current_load || 150) * (100 - percent) / 100
 
-      updateOrderForm({ promised_load })
+      const save_up = (current_load - promised_load) * 3.77
+
+      updateOrderForm({ promised_load, save_up })
     }
 
-    window.updateOrderForm = ({ promised_load } = {}) => {
+    window.updateOrderForm = ({ promised_load, save_up } = {}) => {
       const form = $('.order')
 
       const _current_load = form.find('#current-load')
       const _promised_load = form.find('#promised-load')
-
+      
       if (promised_load) _promised_load.text(promised_load)
+      if (save_up) $('.save-value').text(save_up.toFixed(2))
 
       const current_load = parseFloat(_current_load.val())
       const percent = 27 // %
