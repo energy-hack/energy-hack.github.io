@@ -1,5 +1,11 @@
 window.addEventListener('load', async () => {
-  const web3 = await initWeb3(window)
+  const _web3 = new Promise((resolve, reject) => {
+    resolve(initWeb3(window))
+  })
+
+  window._web3 = _web3
+
+  const web3 = await _web3
 
   const wallet = new Wallet(web3)
   window.wallet = wallet
