@@ -122,7 +122,7 @@
       const estimated = (curload) * progress
       console.log(estimated)
 
-      // try {
+      try {
 
         const lastMeter = await contract.call('getLastMeter')
         console.log(lastMeter)
@@ -132,15 +132,19 @@
         console.log(consumed)
 
         const fraction = Number(1 - consumed/estimated) * 100
-      // }
+
+        $('#status_page_span_number_4').text(Number(consumed).toFixed(0))
+        $('.savings-fraction').text(fraction.toFixed(0))
+
+      } catch (err) {
+        console.error(err)
+      }
 
       $('.progress-timeline').css({ width: progress * 100 + '%' })
-      $('.savings-fraction').text(fraction.toFixed(0))
 
       $('#status_page_span_number_1').text(Number(curload).toFixed(0))
       $('#status_page_span_number_2').text(Number(promised).toFixed(0))
       $('#status_page_span_number_3').text(Number(estimated).toFixed(0))
-      $('#status_page_span_number_4').text(Number(consumed).toFixed(0))
       // ...
 
       if (progress == 1) {
