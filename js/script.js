@@ -15,7 +15,7 @@ window.addEventListener('load', async () => {
   const noxonToken = new Token(web3, tokenAddress)
   await wallet.addToken(noxonToken)
 
-  $('.token_balance').attr("href", "https://rinkeby.etherscan.io/address/" + tokenAddress)
+  $('.token_balance').attr('href', `https://rinkeby.etherscan.io/address/${wallet.account.address}`)
 
   window.buyStarterPack = async () => {
     const { current_load, promised_load, percent } = updateOrderForm()
