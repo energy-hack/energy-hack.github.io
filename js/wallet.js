@@ -96,7 +96,7 @@ class Contract {
     .on('transactionHash', hash => console.log('tx hash', hash))
     .then(receipt => {
       console.log('tx receipt', receipt)
-      return res
+      return receipt
     })
   }
 }
