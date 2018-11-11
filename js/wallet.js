@@ -81,7 +81,13 @@ class Contract {
 
     console.log(`Calling .${method} with (${params.join(', ')})`)
 
-    const estimatedGas = await _method(...params).estimateGas()
+    console.log('method', _method)
+
+    const estimatedGas = await _method(...params).estimateGas({
+      from,
+    })
+
+    console.log('send estimatedGas', estimatedGas)
 
     return _method(...params).send({
       from,
