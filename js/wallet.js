@@ -27,24 +27,24 @@ class Contract {
       throw new Error(`Cant init contract`, address)
   }
 
-  static deploy(web3, bin, abi, value, from, ...params) {
-    customerAddr = customerAddr || this.account.address
+  static deploy(web3, abi, { data, value, from }, ...params) {
+    const ContractFactory = web3.eth.contract(abi);
 
-    var schneiderSystemContract = web3.eth.contract(abi);
-    var schneiderSystem = schneiderSystemContract.new(
+    const contract = ContractFactory.new(
       ...params,
       {
-        from: from, 
-        data: bin,
+        from,
+        data,
+        value,
         gas: '4700000',
-        value: value
       }, function (e, contract){
         console.log(e, contract);
         if (typeof contract.address !== 'undefined') {
             console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
         }
     })
-    return new Contract(web3, schneiderSystem.address, abi);
+
+    return new Contract(web3, contract.address, abi);
   }
 
   call(method, ...params) {
