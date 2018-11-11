@@ -147,7 +147,7 @@ class Wallet {
   getBalance(address) {
     address = address || this.account.address
 
-    return this.web3.eth.getBalance(this.account.address)
+    return this.web3.eth.getBalance(address)
   }
 
   async getTokenBalance(token, address) {
