@@ -28,10 +28,9 @@ class Contract {
   }
 
   static deploy(web3, abi, { data, value, from }, ...params) {
-    customerAddr = customerAddr || this.account.address
+    const ContractFactory = web3.eth.contract(abi);
 
-    var schneiderSystemContract = web3.eth.contract(abi);
-    var schneiderSystem = schneiderSystemContract.new(
+    const contract = ContractFactory.new(
       ...params,
       {
         from,
@@ -44,7 +43,8 @@ class Contract {
             console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
         }
     })
-    return new Contract(web3, schneiderSystem.address, abi);
+
+    return new Contract(web3, contract.address, abi);
   }
 
   call(method, ...params) {
