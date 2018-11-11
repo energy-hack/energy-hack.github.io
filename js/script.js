@@ -27,7 +27,7 @@ window.addEventListener('load', async () => {
 
     const tokenAddress = noxonToken.address
     const endTime = Math.floor(Date.now() / 1000) + 3 * 60
-    const updateTime = 60
+    const updateTime = 20
     const curload = current_load
 
     const customer = wallet.account.address
