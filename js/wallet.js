@@ -71,6 +71,10 @@ class Token extends Contract {
     return this.call('name')
   }
 
+  getSymbol() {
+    return this.call('symbol')
+  }
+
   transfer(from, to, value) {
     this.send("transfer", from, to, value)
     //
