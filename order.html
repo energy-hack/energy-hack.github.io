@@ -44,10 +44,10 @@
       <div class="container">
         <div class="section" id="overview">
 
+          <form class="order">
 
 
           <h2 class="center teal-text darken-3">Starter pack</h2>
-
 
 
           <div class="row">
@@ -56,6 +56,7 @@
               <label for="current-load" style="font-size: 14px;">current monthly consumption in kWh</label>
               <input type="text"
                 id="current-load"
+                onchange="refreshOrderForm()"
                 placeholder="150 kWh"
                 style="font-size: 60px; text-align: center; padding: 25px">
             </div>
@@ -65,8 +66,8 @@
                 promised monthly consumption
               </span>
               <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
-                <span class="future-cons-data" style="font-size: 60px;">
-                  78
+                <span id="promised-load" class="future-cons-data" style="font-size: 60px;">
+                  109.5
                 </span>
                 <span style="font-size: 30px;">
                   kWh
@@ -127,13 +128,15 @@
 
             <div class="pay-button col center s12">
               <span style="font-size: 30px;">
-                <a class="btn-large waves-effect waves-light teal lighten-1" href="#">
+                <a onclick="buyStarterPack()" class="btn-large waves-effect waves-light teal lighten-1" href="#">
                   PAY 300 000 RUB
                 </a>
               </span>
             </div>
 
           </div>
+
+          </form>
 
         </div>
       </div>
