@@ -11,19 +11,46 @@ window.addEventListener('load', async () => {
 
   $('.token_balance').attr("href", "https://rinkeby.etherscan.io/address/" + tokenAddress)
 
-  window.buyStarterPack = () => {
+  window.buyStarterPack = async () => {
     const { current_load, promised_load, percent } = updateOrderForm()
 
-    console.log(`Deploy contract with params ${ { current_load, promised_load, percent } }`)
-    // .........
-    //
-    // const params = { ... }
-    // const schneider_contract = Contract.deploy(web3, _SCHNEIDER_BIN, _SCHNEIDER_ABI, ...params)
-    //
-    // const token = noxonToken
-    // token.transfer(wallet.account.address, contract.address, )
-    // new Contract(...)
-    // wallet.deploy contract
+    console.log(`Deploy contract with params ${current_load}, ${promised_load}, ${percent}`)
+
+    showLoader('pay-button')
+
+    const tokenAddress = noxonToken.address
+    const endTime = Math.floor(Date.now() / 1000) + 3 * 60
+    const updateTime = 60
+    const curload = current_load
+
+    const customer = wallet.account.address
+    const schneider = "0xBEabEcdd11D7E239FEaaB28E1A5b86be95a5F41f"
+
+    const params = [
+      tokenAddress,
+      endTime,
+      updateTime,
+      curload,
+      customer,
+      schneider,
+    ]
+
+    const config = {
+      from: wallet.account.address,
+      data: _SchneiderBIN,
+      value: 2e17,
+    }
+
+    const schneider_contract = await Contract.deploy(web3, _SchneiderABI, config, ...params)
+
+    const token = noxonToken
+    const decimals = await token.getDecimals()
+    const value = "300000000000000000000000" // 300 000 * 1e18
+    const amount = value
+    await token.transfer(wallet.account.address, schneider_contract.address, amount)
+    // await token.transfer(wallet.account.address, "0x17da6a8b86578cec4525945a355e8384025fa5af", amount)
+
+    hideLoader('pay-button')
   }
 
   window.updateBalance = async () => {
