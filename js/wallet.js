@@ -27,6 +27,26 @@ class Contract {
       throw new Error(`Cant init contract`, address)
   }
 
+  static deploy(web3, bin, abi, value, from, ...params) {
+    customerAddr = customerAddr || this.account.address
+
+    var schneiderSystemContract = web3.eth.contract(abi);
+    var schneiderSystem = schneiderSystemContract.new(
+      ...params,
+      {
+        from: from, 
+        data: bin,
+        gas: '4700000',
+        value: value
+      }, function (e, contract){
+        console.log(e, contract);
+        if (typeof contract.address !== 'undefined') {
+            console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+        }
+    })
+    return new Contract(web3, schneiderSystem.address, abi);
+  }
+
   call(method, ...params) {
     const _method = this.contract.methods[method]
     if (!_method) throw new Error(`No such method: ${method} at contract ${this.address}`)
