@@ -27,22 +27,40 @@ class Contract {
       throw new Error(`Cant init contract`, address)
   }
 
-  static deploy(web3, abi, { data, value, from }, ...params) {
-    const ContractFactory = web3.eth.contract(abi);
+  static async deploy(web3, abi, { data, value, from }, ...params) {
+    const Factory = new web3.eth.Contract(abi);
 
-    const contract = ContractFactory.new(
-      ...params,
-      {
-        from,
-        data,
-        value,
-        gas: '4700000',
-      }, function (e, contract){
-        console.log(e, contract);
-        if (typeof contract.address !== 'undefined') {
-            console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
-        }
-    })
+    const deploy = Factory.deploy({ data, arguments: params }).encodeABI();
+
+    const nonce = await web3.eth.getTransactionCount(from, 'pending')
+
+    let transactionObject = {
+      from,
+      nonce,
+      data: deploy,
+    };
+
+    console.log('tx object', transactionObject)
+
+    const estimateGas = await web3.eth.estimateGas(transactionObject)
+
+    transactionObject.gas = estimateGas
+
+    console.log('estimateGas', estimateGas)
+
+    const signedTx = await web3.eth.accounts.signTransaction(transactionObject, wallet.account.privateKey)
+
+    const tx = web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+
+    tx.on('transactionHash', hash => console.log('tx hash', hash))
+
+    const receipt = await tx
+
+    console.log('tx receipt', receipt)
+
+    const address = receipt.contractAddress
+
+    console.log('Contract mined! address: ' + address + ' transactionHash: ' + receipt.transactionHash);
 
     return new Contract(web3, contract.address, abi);
   }
