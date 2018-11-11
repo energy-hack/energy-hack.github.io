@@ -37,6 +37,7 @@ class Contract {
     let transactionObject = {
       from,
       nonce,
+      value,
       data: deploy,
     };
 
