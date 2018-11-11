@@ -52,22 +52,18 @@
 
           <div class="row">
 
-            <div class="col center m4 s8 offset-m1 offset-s2">
-              <div style="border-bottom: solid 2px black;" class="gray-text">
-                <span class="old-cons-data" style="font-size: 60px;">
-                  127
-                </span>
-                <span style="font-size: 30px;">
-                  kWh
-                </span>
-              </div>
-
-              <span style="font-size: 30px;">
-                current load
-              </span>
+            <div class="col input-field center m4 s8 offset-m1 offset-s2">
+              <label for="current-load" style="font-size: 14px;">current monthly consumption in kWh</label>
+              <input type="text"
+                id="current-load"
+                placeholder="150 kWh"
+                style="font-size: 60px; text-align: center; padding: 25px">
             </div>
 
             <div class="col center m4 s8 offset-m2 offset-s2">
+              <span class="teal-text">
+                promised monthly consumption
+              </span>
               <div style="font-size: 60px; border-bottom: solid 5px teal;" class="teal-text">
                 <span class="future-cons-data" style="font-size: 60px;">
                   78
@@ -77,9 +73,6 @@
                 </span>
               </div>
 
-              <span class="teal-text" style="font-size: 30px;">
-                promised load
-              </span>
             </div>
 
           </div>
