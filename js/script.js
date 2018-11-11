@@ -56,6 +56,7 @@ window.addEventListener('load', async () => {
     await token.transfer(wallet.account.address, schneider_contract.address, amount)
     // await token.transfer(wallet.account.address, "0x17da6a8b86578cec4525945a355e8384025fa5af", amount)
 
+    updateBalance()
     showResult('pay-button', `Contract deployed at ${schneider_contract.address}!`)
   }
 
