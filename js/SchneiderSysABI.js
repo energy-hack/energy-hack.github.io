@@ -1,4 +1,4 @@
-[
+const _SchneiderABI = [
 	{
 		"constant": true,
 		"inputs": [],
