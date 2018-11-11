@@ -86,4 +86,5 @@ window.addEventListener('load', async () => {
 
   updateStatusPage();
 
+  setInterval(() => updateStatusPage(true), 2000)
 });
