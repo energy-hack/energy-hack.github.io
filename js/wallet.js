@@ -103,7 +103,7 @@ class Wallet {
     if (!token || !token.isToken)
       throw new Error(`Can't add token`, token)
 
-    const tokenName = await token.getName()
+    const tokenName = await token.getSymbol()
     this.tokens[tokenName] = token
   }
 
