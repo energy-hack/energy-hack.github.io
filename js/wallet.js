@@ -27,17 +27,17 @@ class Contract {
       throw new Error(`Cant init contract`, address)
   }
 
-  static deploy(web3, bin, abi, value, from, ...params) {
+  static deploy(web3, abi, { data, value, from }, ...params) {
     customerAddr = customerAddr || this.account.address
 
     var schneiderSystemContract = web3.eth.contract(abi);
     var schneiderSystem = schneiderSystemContract.new(
       ...params,
       {
-        from: from, 
-        data: bin,
+        from,
+        data,
+        value,
         gas: '4700000',
-        value: value
       }, function (e, contract){
         console.log(e, contract);
         if (typeof contract.address !== 'undefined') {
