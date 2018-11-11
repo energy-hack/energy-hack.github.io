@@ -52,23 +52,30 @@
 
           <div class="row">
 
-            <div class="col input-field center m4 s8 offset-m1 offset-s2">
+            <div class="col input-field center m4 s4 offset-m1 offset-s2"
+              style="white-space: nowrap;">
               <label for="current-load" style="font-size: 14px;">current monthly consumption in kWh</label>
-              <input type="text"
+              <input type="number"
+                class="validate"
                 id="current-load"
                 onkeyup="refreshOrderForm()"
-                placeholder="150 kWh"
-                style="font-size: 60px; text-align: center; padding: 25px">
+                value="15000"
+                style="font-size: 60px; text-align: center; padding: 25px 0;
+                min-width: 200px; max-width: 250px;
+                  border-bottom: dotted 3px teal; outline: none;">
+              <span style="font-size: 30px;">
+                kWh
+              </span>
             </div>
 
             <div class="col center m4 s8 offset-m2 offset-s2">
               <span class="teal-text">
                 promised monthly consumption
               </span>
-              <div style="font-size: 60px; border-bottom: solid 5px teal; overflow-x: scroll; 
-              white-space: nowrap;" class="teal-text">
+              <div class="teal-text"
+                style="font-size: 60px; border-bottom: solid 5px teal; overflow-x: scroll; white-space: nowrap;">
                 <span id="promised-load" class="future-cons-data" style="font-size: 60px;">
-                  109.5
+                  10950
                 </span>
                 <span style="font-size: 30px;">
                   kWh
@@ -113,7 +120,7 @@
             <div class="col center s12 teal-text">
               <span style="font-size: 40px;">
                   SAVE UP TO
-                  <span class="save-value">45 000</span>
+                  <span class="save-value">15000</span>
                   RUB MONTHLY
               </span>
             </div>
@@ -121,6 +128,11 @@
           </div>
 
           <div class="row">
+
+            <div class="result-bar col center s12" data-result-for="pay-button">
+              <span></span>
+            </div>
+
             <div class="progress-bar hide col center s12" data-loader-for="pay-button">
               <div class="progress">
                 <div class="indeterminate"></div>
