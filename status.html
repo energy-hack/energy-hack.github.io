@@ -40,15 +40,14 @@
 
   <div class="container">
     <div class="section" id="overview">
-      <form class="order">
 
         <h2 class="center teal-text darken-3">Status</h2>
 
-        <div class="col center" style="margin-top: 20px;">
+        <!-- <div class="col center" style="margin-top: 20px;">
           <span style="font-size: 20px;">
             Some information about this exact contract
           </span>
-        </div>
+        </div> -->
 
         <div class="col center" style="margin-bottom: 20px">
           <span style="font-size: 14px;" class="contract-address">
@@ -58,12 +57,14 @@
         </div>
 
 
+        <div class="progress" style="margin-bottom: 80px; margin-top: 40px">
+           <div class="progress-timeline determinate"></div>
+        </div>
 
-        <hr style="margin-bottom: 80px; margin-top: 40px">
 
         <div class="row">
 
-          <div class="col center m4 s4 offset-m1 offset-s2">
+          <div class="col center m6 s12">
             <span class="black-text">
               currently monthly consumption
             </span>
@@ -77,7 +78,7 @@
             </div>
           </div>
 
-          <div class="col center m4 s8 offset-m2 offset-s2">
+          <div class="col center m6 s12">
             <span class="teal-text">
               promised monthly consumption
             </span>
@@ -95,11 +96,14 @@
 
         <div class="row" style="margin-top: 80px;">
 
-            <div class="col center m4 s4 offset-m1 offset-s2">
+            <div class="col center m6 s12">
               <span class="black-text">
                 estimated usual consumption
               </span>
               <div class="black-text" style="font-size: 60px; border-bottom: dotted 5px black; white-space: nowrap;">
+                <span style="font-size: 40px;">
+                  ~
+                </span>
                 <span id="status_page_span_number_3" class="future-cons-data" style="font-size: 80px;">
                   ...
                 </span>
@@ -109,7 +113,7 @@
               </div>
             </div>
 
-            <div class="col center m4 s8 offset-m2 offset-s2">
+            <div class="col center m6 s12">
               <span class="teal-text">
                 current consumed
               </span>
@@ -125,7 +129,6 @@
 
           </div>
 
-      </form>
     </div>
   </div>
 

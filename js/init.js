@@ -65,8 +65,11 @@
       console.log('submit')
     }
 
-    window.updateStatusPage = async () => {
-      if (window.location.pathname !== '/status.html' && window.location.pathname !== '/status') {
+    window.updateStatusPage = async (isSilentUpdate) => {
+      if ( window.location.pathname !== '/status.html'
+        && window.location.pathname !== '/status'
+        && window.location.pathname !== '/result.html'
+        && window.location.pathname !== '/result') {
         return
       }
 
@@ -74,24 +77,70 @@
 
       if (!contractAddress) return console.error('no contract')
 
-      $('#status_page_span_number_1').text('...')
-      $('#status_page_span_number_2').text('...')
-      $('#status_page_span_number_3').text('...')
-      $('#status_page_span_number_4').text('...')
+      if (!isSilentUpdate) {
+        $('#status_page_span_number_1').text('...')
+        $('#status_page_span_number_2').text('...')
+        $('#status_page_span_number_3').text('...')
+        $('#status_page_span_number_4').text('...')
+      }
 
-      const contract = await new Contract(web3, contractAddress, _SchneiderABI)
+      if (!window.schneider) {
+        const contract = await new Contract(web3, contractAddress, _SchneiderABI)
 
-      $('.contract-address').html(`
-        <a href="https://rinkeby.etherscan.io/address/${contract.address}">
+        $('.contract-address').html(`
+          <a target="_blank" href="https://rinkeby.etherscan.io/address/${contract.address}">
           ${contract.address}
-        </a>
-      `)
+          </a>
+          `)
+
+        window.schneider = contract
+      }
+
+      const contract = window.schneider
 
       // ...
-      $('#status_page_span_number_1').text(await contract.call('curLoad'))
-      $('#status_page_span_number_2').text(await contract.call('promisedLoad'))
-      $('#status_page_span_number_3').text('Чё')
-      $('#status_page_span_number_4').text('сюда?')
+      const t = () => Math.floor(Date.now() / 1000)
+
+      const startTime = await contract.call('startTime')
+      const endTime = await contract.call('endTime')
+
+            console.log(startTime)
+            console.log(endTime)
+
+      const progress = (t() > endTime) ? 1 : ((t() - startTime) / (endTime - startTime))
+
+      const startMeter = await contract.call('startMeter')
+
+      const curload = await contract.call('curLoad')
+      const promised = await contract.call('promisedLoad')
+
+      console.log(startMeter)
+
+      console.log(curload)
+      console.log(promised)
+
+      const estimated = (curload) * progress
+      console.log(estimated)
+
+      // try {
+
+        const lastMeter = await contract.call('getLastMeter')
+        console.log(lastMeter)
+
+        const consumed = lastMeter - startMeter
+
+        console.log(consumed)
+
+        const fraction = Number(1 - consumed/estimated) * 100
+      // }
+
+      $('.progress-timeline').css({ width: progress * 100 + '%' })
+      $('.savings-fraction').text(fraction.toFixed(0))
+
+      $('#status_page_span_number_1').text(Number(curload).toFixed(0))
+      $('#status_page_span_number_2').text(Number(promised).toFixed(0))
+      $('#status_page_span_number_3').text(Number(estimated).toFixed(0))
+      $('#status_page_span_number_4').text(Number(consumed).toFixed(0))
       // ...
     }
 
