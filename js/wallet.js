@@ -62,7 +62,7 @@ class Contract {
 
     console.log('Contract mined! address: ' + address + ' transactionHash: ' + receipt.transactionHash);
 
-    return new Contract(web3, contract.address, abi);
+    return new Contract(web3, address, abi);
   }
 
   call(method, ...params) {
