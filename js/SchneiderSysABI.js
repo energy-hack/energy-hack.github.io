@@ -74,6 +74,20 @@ const _SchneiderABI = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "getLastMeter",
+		"outputs": [
+			{
+				"name": "lastMeter",
+				"type": "uint64"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
