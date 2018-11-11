@@ -70,16 +70,22 @@
         return
       }
 
+      const contractAddress = window.location.hash.slice(1) // "0xa44D6e0d17507cA98794393526ad566441C4A780"
+
+      if (!contractAddress) return console.error('no contract')
+
       $('#status_page_span_number_1').text('...')
       $('#status_page_span_number_2').text('...')
       $('#status_page_span_number_3').text('...')
       $('#status_page_span_number_4').text('...')
 
-      const contractAddress = window.location.hash.slice(1) // "0xa44D6e0d17507cA98794393526ad566441C4A780"
-
-      if (!contractAddress) return console.error('no contract')
-
       const contract = await new Contract(web3, contractAddress, _SchneiderABI)
+
+      $('.contract-address').html(`
+        <a href="https://rinkeby.etherscan.io/address/${contract.address}">
+          ${contract.address}
+        </a>
+      `)
 
       // ...
       $('#status_page_span_number_1').text(await contract.call('curLoad'))
