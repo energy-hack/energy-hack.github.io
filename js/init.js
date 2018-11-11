@@ -142,6 +142,13 @@
       $('#status_page_span_number_3').text(Number(estimated).toFixed(0))
       $('#status_page_span_number_4').text(Number(consumed).toFixed(0))
       // ...
+
+      if (progress == 1) {
+        if ( window.location.pathname == '/status.html'
+          || window.location.pathname == '/status') {
+            window.location = `/result#${contractAddress}`
+          }
+      }
     }
 
   }); // end of document ready
