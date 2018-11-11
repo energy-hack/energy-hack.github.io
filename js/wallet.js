@@ -94,7 +94,7 @@ class Contract {
       gasLimit: estimatedGas || 1e5
     })
     .on('transactionHash', hash => console.log('tx hash', hash))
-    .then(tx => {
+    .then(receipt => {
       console.log('tx receipt', receipt)
       return res
     })
