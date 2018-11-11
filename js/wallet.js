@@ -63,6 +63,10 @@ class Token extends Contract {
     this.isToken = true
   }
 
+  getDecimals() {
+    return this.call('decimals')
+  }
+
   getName() {
     return this.call('name')
   }
@@ -108,6 +112,6 @@ class Wallet {
   getTokenBalance(token, address) {
     address = address || this.account.address
 
-    return token.getBalance(address)
+    return token.getBalance(address) / (10**parseInt(await token.getDecimals()))
   }
 }
