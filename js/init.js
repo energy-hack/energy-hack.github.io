@@ -24,12 +24,12 @@
       button.removeClass('hide')
     }
 
-    window.showResult = (className, resultText) => {
+    window.showResult = (className, resultHTML) => {
       const button = $(`.${className}`)
       const loader = $(`[data-loader-for=${className}]`)
       const result = $(`[data-result-for=${className}]`)
 
-      result.text(resultText)
+      result.html(resultHTML)
 
       loader.addClass('hide')
       button.addClass('hide')
