@@ -60,6 +60,8 @@ window.addEventListener('load', async () => {
   }
 
   window.updateBalance = async () => {
+    $('.token_balance').text( ' ... ' )
+
     const wei = await wallet.getBalance()
     const balance = web3.utils.fromWei(wei)
 
