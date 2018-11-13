@@ -26,6 +26,10 @@ Blockchain also stores all the historical values. One can check that they are in
  - alerts when usage peaks above steady growth
  - more complicated formulae
  - fiat settlement is possible
+ 
+# Acknowledgments
+
+This project receives a #1 "Energomanagement" prize at https://energyhack.ru.
 
 # Usage
 
