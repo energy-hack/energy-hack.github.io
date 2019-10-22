@@ -4,7 +4,7 @@ A setup for trustless monthly payment settlement
 
 # The Problem
 
-Schneider Electric is a electricity consulting company. They can help their clients reduce electricity bill via upgrading their hardware.
+Schneider Electric is an electricity consulting company. They can help their clients reduce electricity bill via upgrading their hardware.
 
 1. SE reviews infrastructure and decides on a percent they aim to reduce (e.g. 27%)
 2. Client sets up smart contract at https://energy-hack.github.io/order.html#starter, locking payment for SE services.
